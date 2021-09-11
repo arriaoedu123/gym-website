@@ -2,7 +2,8 @@
 # Creator: Arreaum
 # GitHub: https://github.com/arriaoedu123/
 # Creation date: 03/09/2021
-# Version: 1.0
+# Upload date: 11/09/2021
+# Version: 1.2
 */
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
@@ -92,6 +93,7 @@ header .btn{
   background-position: center;
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
   flex-wrap: wrap;
   padding: 20px 100px;
@@ -102,11 +104,52 @@ header .btn{
   font-size: 30px;
   color: #fff;
   text-transform: uppercase;
+  animation: slide-in-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
 .section-main p {
   margin-top: 15px;
   color: #fff;
+  animation: slide-in-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s both;
+}
+
+.scroll-line-div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  bottom: 2rem;
+  color: #fff;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.scroll-line-div.animate {
+  opacity: 0;
+}
+
+.scroll-line {
+  z-index: 20;
+  display: block;
+  width: 2px;
+  height: 70px;
+  margin-left: -1px;
+  background: #fff;
+  transform-origin: top;
+  transition: scaleY(0);
+  animation: animate 2.5s infinite 0.4s forwards;
+  animation-play-state: running;
+}
+
+.scroll-line-div i {
+  margin-top: 20px;
+  font-size: 1.3rem;
+}
+
+.scroll-line-div.animate .scroll-line {
+  animation-play-state: paused;
 }
 
 .container {
@@ -126,23 +169,61 @@ header .btn{
   justify-content: center;
   flex-wrap: wrap;
   margin-top: 110px;
+  overflow: hidden;
 }
 
 .card {
   width: 340px;
   margin: 10px;
-  display: flex;
+  display: none;
   align-items: center;
   flex-direction: column;
   padding: 20px;
   border-radius: 10px;
-  transition: transform 0.3s;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
-.card:hover {
-  transform: scale(1.1);
+.section-one.anim-card .card:nth-child(1),
+.section-one.anim-card .card-personal:nth-child(1) {
+  animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.2s both;
+  display: flex;
+} 
+
+.section-one.anim-card .card:nth-child(2),
+.section-one.anim-card .card-personal:nth-child(2) {
+  animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.4s both;
+  display: flex;
 }
+
+.section-one.anim-card .card:nth-child(3),
+.section-one.anim-card .card-personal:nth-child(3) {
+  animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.6s both;
+  display: flex;
+}
+
+.section-one.anim-card .card:nth-child(4),
+.section-one.anim-card .card-personal:nth-child(4) {
+  animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.8s both;
+  display: flex;
+}
+
+.section-one.anim-card .card:nth-child(5),
+.section-one.anim-card .card-personal:nth-child(5) {
+  animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 1s both;
+  display: flex;
+} 
+
+.section-one.anim-card .card:nth-child(6),
+.section-one.anim-card .card-personal:nth-child(6) {
+  animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.2s both;
+  display: flex;
+}
+
+.section-one.anim-card .card:nth-child(7),
+.section-one.anim-card .card-personal:nth-child(7) {
+  animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.4s both;
+  display: flex;
+} 
 
 .card i{
   font-size: 34px;
@@ -165,7 +246,12 @@ header .btn{
   background: var(--cyan);
   border-radius: 10px;
   margin-top: 20px;
+  transition: transform 0.3s ease;
+}
 
+.card a:hover,
+.card-personal a:hover {
+  transform: scale(1.05);
 }
 
 .separator { /* giving separator div a style */
@@ -242,11 +328,22 @@ header .btn{
   margin-bottom: 0;
 }
 
+.social-media a {
+  margin-right: 10px;
+  color: #fff;
+  font-size: 18px;
+}
+
+.social-media a:last-child {
+  margin-right: 0;
+}
+
 .footer {
   width: 100%;
   height: 80px;
   background: var(--cyan);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   color: #fff;
@@ -262,14 +359,7 @@ header .btn{
   background-position: center;
 }
 
-.section-one-personal {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: 110px;
-}
-
-.section-one-personal h2 {
+.section-one h2 {
   font-size: 42px;
   margin-bottom: 50px;
   text-align: center;
@@ -279,17 +369,12 @@ header .btn{
 .card-personal {
   width: 340px;
   margin: 10px;
-  display: flex;
+  display: none;
   align-items: center;
   flex-direction: column;
   padding: 20px;
   border-radius: 10px;
-  transition: transform 0.3s;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-}
-
-.card-personal:hover {
-  transform: scale(1.06);
 }
 
 .card-personal img {
@@ -313,7 +398,7 @@ header .btn{
   background: var(--cyan);
   border-radius: 10px;
   margin-top: 20px;
-
+  transition: transform 0.3s ease;
 }
 
 /* end personal css */
@@ -345,7 +430,7 @@ header .btn{
 
 /* end swimming teacher css */
 
-@media (max-width: 1420px){
+@media (max-width: 1300px){
   header .btn{
     display: block;
     margin-right: 20px;
@@ -393,6 +478,14 @@ header .btn{
     right: 0;
     width: 100%;
   }
+
+  .scroll-line {
+    animation: animate 2.5s infinite reverse;
+  }
+
+  .scroll-line-div i {
+    visibility: hidden;
+  }
 }
 
 @media (max-width: 480px) {
@@ -417,3 +510,47 @@ header .btn{
   }
 }
       
+@keyframes animate {
+  0% {
+    transform: translateY(0) scaleY(0);
+    transform-origin: top;
+  }
+  45% {
+    transform: translateY(0) scaleY(1);
+    transform-origin: top;
+  }
+  50% {
+    transform: translateY(0) scaleY(1);
+    transform-origin: bottom;
+  }
+  100% {
+    transform: translateY(0) scaleY(0);
+    transform-origin: bottom;
+  }
+}
+
+@keyframes slide-in-left {
+  0% {
+    -webkit-transform: translateX(-1000px);
+            transform: translateX(-1000px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-right {
+  0% {
+    -webkit-transform: translateX(1000px);
+            transform: translateX(1000px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 1;
+  }
+}
