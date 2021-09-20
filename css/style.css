@@ -139,7 +139,6 @@ header .btn{
   margin-left: -1px;
   background: #fff;
   transform-origin: top;
-  transition: scaleY(0);
   animation: animate 2.5s infinite 0.4s forwards;
   animation-play-state: running;
 }
